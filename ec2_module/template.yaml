@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Terraform Test Cloudformation
+
+Parameters:
+  SecurityGroupTerraform:
+    Type: String
+    Description: "Security Group IDs"
+
+  SecurityGroupTerraformNew1:
+    Type: String
+    Description: "New Security Group ID"
+
+Resources:
+  TerraformEC2Instance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0dab0800aa38826f2
+      SecurityGroupIds:
+        - !Ref SecurityGroupTerraform
+
+  TerraformEC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0dab0800aa38826f2
+      SecurityGroupIds:
+        - !Ref SecurityGroupTerraform
+
+  TerraformEC2Instance3:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0dab0800aa38826f2
+      SecurityGroupIds:
+        - !Ref SecurityGroupTerraform
+
+Outputs:
+  InstanceId1:
+    Description: The EC2 instance ID
+    Value: !Ref TerraformEC2Instance1
+
+  InstanceId2:
+    Description: The EC2 instance ID
+    Value: !Ref TerraformEC2Instance2
+
+  InstanceId3:
+    Description: The EC2 instance ID
+    Value: !Ref TerraformEC2Instance3
